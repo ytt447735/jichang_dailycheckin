@@ -26,7 +26,7 @@ def push(content):
 
 login_url = 'https://ikuuu.pw/auth/login'
 check_url = 'https://ikuuu.pw/user/checkin'
-info_url = 'https://ikuuu.me/user/profile'
+info_url = 'https://ikuuu.pw/user/profile'
 
 header = {
         'origin': 'https://ikuuu.pw',
