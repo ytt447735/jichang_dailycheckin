@@ -41,7 +41,7 @@ try:
     content = ''
     print('进行登录...')
     response = json.loads(session.post(url=login_url,headers=header,data=data).text)
-    print(response['msg'])
+    # print(response['msg'])
     # 获取账号名称
     # info_html = session.get(url=info_url,headers=header).text
 #     info = "".join(re.findall('<span class="user-name text-bold-600">(.*?)</span>', info_html, re.S))
@@ -108,7 +108,7 @@ try:
     
     # 进行签到
     result = json.loads(session.post(url=check_url,headers=header).text)
-    print(result['msg'])
+    # print(result['msg'])
     content = content + '签到结果：'+result['msg']+ "\n"
     # 进行推送
     push(content)
