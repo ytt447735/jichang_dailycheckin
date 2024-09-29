@@ -52,19 +52,19 @@ try:
     membership_duration_match = re.search(r'<h4>会员时长</h4>\s*</div>\s*<div class="card-body">\s*([\u4e00-\u9fa5]+ \([\u4e00-\u9fa5]+\))', user_html)
     if membership_duration_match:
         membership_duration = membership_duration_match.group(1)
-        content =  content + f"会员时长: {membership_duration}" + "\n"
+        content =  content + f"会员时长: {membership_duration}" + "\n\n"
     
     # 匹配永久 (免费版)
     permanent_free_match = re.search(r'<div class="card-body">\s*([\u4e00-\u9fa5]+ \([\u4e00-\u9fa5]+\))', user_html)
     if permanent_free_match:
         permanent_free = permanent_free_match.group(1)
-        content =  content + f"永久 (免费版): {permanent_free}"+ "\n"
+        content =  content + f"永久 (免费版): {permanent_free}"+ "\n\n"
     
     # 匹配免费版: 永久
     free_version_match = re.search(r'免费版:\s*([\u4e00-\u9fa5]+)', user_html)
     if free_version_match:
         free_version = free_version_match.group(1)
-        content =  content + f"免费版: {free_version}"+ "\n"
+        content =  content + f"免费版: {free_version}"+ "\n\n"
     
     
     # 匹配剩余流量的值和单位
@@ -72,33 +72,33 @@ try:
     if remaining_traffic_match:
         remaining_traffic_value = remaining_traffic_match.group(1)
         remaining_traffic_unit = remaining_traffic_match.group(2)
-        content =  content + f"剩余流量: {remaining_traffic_value} {remaining_traffic_unit}"+ "\n"
+        content =  content + f"剩余流量: {remaining_traffic_value} {remaining_traffic_unit}"+ "\n\n"
     
     # 匹配今日已用的流量
     today_used_match = re.search(r'今日已用\s*:\s*([\dA-Z]+)', user_html)
     if today_used_match:
         today_used = today_used_match.group(1)
-        content =  content + f"今日已用: {today_used}"+ "\n"
+        content =  content + f"今日已用: {today_used}"+ "\n\n"
     
     # 匹配在线设备数和设备总数
     device_count_match = re.search(r'<span class="counter">(\d+)</span>\s*/\s*<span class="counterup">(\d+)</span>', user_html)
     if device_count_match:
         online_devices = device_count_match.group(1)
         total_devices = device_count_match.group(2)
-        content =  content + f"在线设备数: {online_devices} / {total_devices}"+ "\n"
+        content =  content + f"在线设备数: {online_devices} / {total_devices}"+ "\n\n"
     
     # 匹配上次使用时间
     last_used_time_match = re.search(r'上次使用时间\s*:\s*([\d-]+\s*[\d:]+)', user_html)
     if last_used_time_match:
         last_used_time = last_used_time_match.group(1)
-        content =  content + f"上次使用时间: {last_used_time}"+ "\n"
+        content =  content + f"上次使用时间: {last_used_time}"+ "\n\n"
     
     
     # 匹配钱包余额
     wallet_balance_match = re.search(r'钱包余额.*?¥\s*<span class="counter">([\d.]+)</span>', user_html, re.S)
     if wallet_balance_match:
         wallet_balance = wallet_balance_match.group(1)
-        content =  content + f"钱包余额: ¥{wallet_balance}"+ "\n"
+        content =  content + f"钱包余额: ¥{wallet_balance}"+ "\n\n"
     
     # 匹配累计获得返利金额
     rebate_amount_match = re.search(r'累计获得返利金额:\s*¥([\d.]+)', user_html)
